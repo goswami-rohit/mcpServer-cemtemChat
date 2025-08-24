@@ -38,7 +38,7 @@ app.use(express.json());
 
 // You will need to set these environment variables in your Render service
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const QDRANT_URL = process.env.QDRANT_URL; // Get URL from env
+const QDRANT_URL = process.env.QDRANT_ENDPOINT_ID_URL; // Get URL from env
 const QDRANT_API_KEY = process.env.QDRANT_API_KEY; // Get API key from env
 const COLLECTION_NAME = "mcp_collection";
 
