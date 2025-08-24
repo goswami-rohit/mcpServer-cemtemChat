@@ -44,7 +44,7 @@ const COLLECTION_NAME = "mcp_collection";
 
 // Exit if the API key is not found to prevent errors
 if (!GEMINI_API_KEY || !QDRANT_URL || !QDRANT_API_KEY) {
-  throw new Error("Missing one or more required environment variables: GEMINI_API_KEY, QDRANT_URL, or QDRANT_API_KEY.");
+  throw new Error("Missing one or more required environment variables: GEMINI_API_KEY, QDRANT_ENDPOINT_ID_URL, or QDRANT_API_KEY.");
 }
 
 // Global Qdrant client instance
@@ -95,14 +95,6 @@ async function bootstrapQdrant(reportData: any) {
 
 // Prisma Client initialization
 const prisma = new PrismaClient();
-
-// ------------------------------------------------------------------------------------------------
-// Configure Express to serve the static frontend files
-// ------------------------------------------------------------------------------------------------
-// Set the frontend path
-const frontendPath = path.join(__dirname, '..', '..', 'frontend', 'dist');
-// Serve static files from the 'dist' directory
-app.use(express.static(frontendPath));
 
 // ------------------------------------------------------------------------------------------------
 // The /chat endpoint
@@ -175,6 +167,12 @@ app.post('/chat', async (req, res) => {
         res.status(500).json({ message: 'An error occurred while processing your request.' });
     }
 });
+
+
+// Configure Express to serve the static frontend files
+const frontendPath = path.join(__dirname, '..', '..', 'frontend', 'dist');
+// Serve static files from the 'dist' directory
+app.use(express.static(frontendPath));
 
 // Start the server
 app.listen(port, () => {
