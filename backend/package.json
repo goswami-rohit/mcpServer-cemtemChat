@@ -5,10 +5,9 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "start": "node dist/index.js",
-    "build": "npx tsc && cp -r ../frontend/dist/ dist/",
-    "dev": "npm run build && nodemon --watch dist --exec node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --watch dist --exec node dist/index.js",
+    "build": "cd frontend && npm run build && cd ../backend && npm run build",
+    "start": "cd backend && npm run start"
   },
   "author": "",
   "license": "ISC",
