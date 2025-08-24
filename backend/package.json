@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon --watch dist --exec node dist/index.js",
-    "build": "cd frontend && npm run build && cd ../backend && npx tsc && npm run build",
-    "start": "cd backend && npm run start"
+    "build": "npx tsc",
+    "start": "node dist/index.js"
   },
   "author": "",
   "license": "ISC",
